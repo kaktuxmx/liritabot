@@ -1,0 +1,22 @@
+{
+  "name": "liritabot",
+  "version": "1.0.0",
+  "description": "Lirita Bot",
+  "main": "key.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaktuxmx/liritabot.git"
+  },
+  "keywords": [
+    "lirita"
+  ],
+  "author": "Martin Gaxiola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaktuxmx/liritabot/issues"
+  },
+  "homepage": "https://github.com/kaktuxmx/liritabot#readme"
+}
