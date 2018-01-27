@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/kaktuxmx/liritabot/issues"
   },
-  "homepage": "https://github.com/kaktuxmx/liritabot#readme"
+  "homepage": "https://github.com/kaktuxmx/liritabot#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "spotify": "^0.3.0",
+    "twitter": "^1.7.1"
+  }
 }
