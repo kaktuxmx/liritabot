@@ -13,33 +13,28 @@ console.log('Follow this instructions so you know the amazing things LIRI does '
 console.log('1. You can type "node liri.js my-tweets" this will help you see tweets from kaktuxdev ');
 console.log('2. You can type "node liri.js spotify-this-song" and the name of a song-like-this');
 console.log('3. You can type "node liri.js movie-this" and the name of a movie-like-this');
-console.log('4. You can type "node liri.js "do-what-it-says" and LIRI will take the stuff from random.txt and do it!');
+console.log('4. You can type "node liri.js do-what-it-says" and LIRI will take the stuff from random.txt and do it!');
 
 //Global variables for the different funtions and the switch statement that will be soon.
 var arg1 = process.argv[2];
 var arg2 = process.argv[3];
 
 
-//This is the Switch statement, that will select 
-
 // do-what-its-says
 
 var wantitaway = function() {
-                var songsearch = function() {
+                var weirdsong = "I Want it That Way";
+                songsearch(weirdsong);
 
-                    arg2 = "I Want it That Way";
-                    songsearch();
-
-                };
-
+    
 };
 
 
 // Do Spotify Function
-var songsearch = function() {
+var songsearch = function(song) {
     var spotify = new Spotify(keys.spotifyKeys);
 
-    spotify.search({type: 'track', query: arg2 }, function(err, data) { 
+    spotify.search({type: 'track', query: song }, function(err, data) { 
     if (err) {
         return console.log('Error occurred: ' + err);
     }
@@ -51,7 +46,7 @@ var songsearch = function() {
 };
 
 //Do Twitter stuff.
- 
+            // THIS NEEDS TO FIX THE LOOP AND MAKE THE TWEETS//This is the Switch statement, that will select 
 var mytweets = function() {
 
     var client = new Twitter(keys.twitterKeys);
@@ -67,45 +62,50 @@ var mytweets = function() {
     });
 };
 
+// THIS NEEDS A LOOP!!!!
 
-var showmovie = function () {
+var showmovie = function (movie) {
 
-
-
-    request('http://www.omdbapi.com/?t=' + arg2 +'&apikey='+keys.omdbkey.theapi, function (error, response, body) {
+    request('http://www.omdbapi.com/?t=' + movie +'&apikey='+keys.omdbkey.theapi, function (error, response, body) {
             body = JSON.parse (body);
+            if (!error) {
             console.log('The Movie is:', body.Title);
             console.log('The Year was: ' + body.Year);
-
+            };
     });
 
 
 }
 
+//This is the Switch statement, that will select 
 
-var letsdoit = function(anotherarg1) { // if 
-    switch (anotherarg1){
+var letsdoit = function(a1, a2) { 
+    
+    switch (a1){
         case 'my-tweets':
             mytweets();
             break;
         case 'spotify-this-song':
-            songsearch();
+            songsearch(a2);
             break;
         case 'movie-this':
-            showmovie();
+            showmovie(a2);
+            break;
         case 'do-what-it-says':
             wantitaway();
-        break;
+            break;
         default:
             console.log("What the hell are you doing??? Pick the correct one");
-        };
+        }
 
 };
 
+// Select and define from the beggining the variables.
+
 if (arg1) {
-    letsdoit(arg1);
+    letsdoit(arg1, arg2);
 } else {
-    console.log("Need to look the instructins")   
+    console.log("Need to look the instructins");   
 }
 
 
